@@ -16,7 +16,7 @@ const FullPizza: React.FC = () => {
 		async function fetchPizza() {
 			try {
 				const { data } = await axios.get(
-					(process.env.REACT_APP_BASE_API_URL as string) + '/items' + id,
+					(process.env.REACT_APP_BASE_API_URL as string) + 'Pizza/items' + id,
 				);
 
 				setPizza(data);

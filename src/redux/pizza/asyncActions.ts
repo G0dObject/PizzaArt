@@ -9,7 +9,7 @@ export const fetchPizzas = createAsyncThunk<Pizza[], SearchPizzaParams>(
   async (params) => {
     const { sortBy, order, category, search, currentPage } = params;
     console.log(params);
-    const { data } = await axios.get<Pizza[]>(process.env.REACT_APP_BASE_API_URL+"items", {
+    const { data } = await axios.get<Pizza[]>(process.env.REACT_APP_BASE_API_URL+"Pizza/items", {
       params: pickBy(
         {
           page: currentPage,
