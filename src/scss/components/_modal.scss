@@ -1,0 +1,51 @@
+.modal {
+	&__wrapper {
+		position: relative;
+		width: 100%;
+		height: fit-content;
+	}
+
+	&__main {
+		position: absolute;
+		width: 100%;
+		height: 300px;
+		background-color: rgba($color: #000000, $alpha: 0.3);
+		z-index: 30;
+	}
+	&__inner {
+		margin-top: 70px;
+		flex-grow: 1;
+		flex-wrap: wrap;
+		height: 30%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+.break {
+	flex-basis: 100%;
+	width: 0px;
+	height: 0px;
+	overflow: hidden;
+}
+#phone {
+	width: 300px;
+	height: 30px;
+	font-size: medium;
+	opacity: 1;
+	color: black;
+}
+.label {
+	color: rgba($color: black, $alpha: 1);
+}
+.send {
+	width: 100px;
+	height: 30px;
+	margin-top: 30px;
+
+	background-color: #f24701;
+	color: white;
+	cursor: pointer;
+	border: 0;
+	border-radius: 30px;
+}
