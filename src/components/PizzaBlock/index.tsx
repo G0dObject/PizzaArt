@@ -36,7 +36,7 @@ export const PizzaBlock: React.FC<PizzaBlockProps> = ({
 		const item: CartItem = {
 			id,
 			title,
-			price,
+			price: currentPrice,
 			imageUrl,
 			type: typeNames[activeType],
 			size: sizes[activeSize],
