@@ -46,12 +46,18 @@ const Cart: React.FC = () => {
 						<div className="label">Введите свой номер телефона</div>
 						<div className="break"></div>
 						<input
+							onKeyPress={(event) => {
+								if (!/[0-9]/.test(event.key)) {
+									event.preventDefault();
+								}
+							}}
+							type="text"
+							placeholder="Номер телефона"
 							ref={phone}
-							type="tel"
 							id="phone"
-							name="phone"
-							pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-							required></input>
+							name="tel"
+							required
+							maxLength={13}></input>
 						<div className="break"></div>
 						<button className="send" onClick={() => fetchPizza()}>
 							send data
