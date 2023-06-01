@@ -4,7 +4,7 @@ export type Pizza = {
   price: number;
   imageUrl: string;
   sizes: number[];
-  types: number[];
+  category: string;
   rating: number;
 };
 

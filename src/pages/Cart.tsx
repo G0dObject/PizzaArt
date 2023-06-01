@@ -29,8 +29,12 @@ const Cart: React.FC = () => {
 		try {
 			await axios.post(process.env.REACT_APP_BASE_API_URL + 'order/', {
 				CustomerNumber: phone.current?.value,
-				PizzasId: items.map((a) => a.id),
+				ProductsId: items.map((a) => a.id),
+				Total: totalPrice,
+				Amount: totalCount,
 			});
+			console.log(items.map((a) => a.id));
+
 			dispatch(clearItems());
 			alert('заказ принят');
 			setModalVisible(false);
