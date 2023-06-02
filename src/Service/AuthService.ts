@@ -7,6 +7,6 @@ import { IUser } from '../Core/Interfaces/Auth/IUser';
 export default class AuthService {
 	static async login(props: ILogin /*email: string, password: string*/) {	
 
-		return await axios.post<IUser>(process.env.REACT_APP_BASE_API_URL  + 'login/login', { username:props.username, password : props.password });
+		 return await axios.post<IUser>(process.env.REACT_APP_BASE_API_URL  + 'login/login', { username:props.username, password : props.password });
 	}
 }
