@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react';
 
+import { AuthStore } from '..';
 import './_Admin.scss';
 
 const Auth = () => {
-	const email = useRef(null);
 	const pass = useRef(null);
 	const passR = useRef(null);
 	const username = useRef(null);
@@ -21,68 +21,65 @@ const Auth = () => {
 		});
 	};
 
-	// const login = () => {
-	// 	let eref = email as React.RefObject<HTMLInputElement>;
-	// 	let pref = pass as React.RefObject<HTMLInputElement>;
+	const login = () => {
+		let uref = username as React.RefObject<HTMLInputElement>;
+		let pref = pass as React.RefObject<HTMLInputElement>;
 
-	// 	store
-	// 		.login({
-	// 			email: eref.current?.value as string,
-	// 			password: pref.current?.value as string,
-	// 		})
-	// 		.then((response) => {
-	// 			console.log(response);
+		AuthStore.login({
+			username: uref.current?.value as string,
+			password: pref.current?.value as string,
+		}).then((response) => {
+			console.log(response);
 
-	// 			if (response === undefined) {
-	// 				setError('Что-то пошло не так');
-	// 			}
-	// 			switch (response) {
-	// 				case 400:
-	// 					setError('Что-то пошло не так');
-	// 					break;
-	// 				case 401:
-	// 					setError('Не верный email ил пароль');
-	// 					break;
+			if (response === undefined) {
+				setError('Что-то пошло не так');
+			}
+			switch (response) {
+				case 400:
+					setError('Что-то пошло не так');
+					break;
+				case 401:
+					setError('Не верный логин ил пароль');
+					break;
 
-	// 				default:
-	// 					setError('Что-то пошло не так');
-	// 					break;
-	// 			}
-	// 		});
-	// };
-	// const singin = () => {
-	// 	return (
-	// 		<>
-	// 			<div className="auth-window__label">Админ меню</div>
-	// 			<div className="auth-window__inputs">
-	// 				<input
-	// 					placeholder="Эл. Почта"
-	// 					ref={email}
-	// 					type="email"
-	// 					className="auth-window__field"></input>
-	// 				<div className="pass">
-	// 					<input
-	// 						placeholder="Пароль"
-	// 						type="password"
-	// 						className="auth-window__password"
-	// 						ref={pass}></input>
-	// 					<img onClick={() => passEye([pass])} src={''}></img>
-	// 				</div>
-	// 			</div>
-	// 			<h1>{error}</h1>
-	// 			<button onClick={login} className="submit authbutton">
-	// 				Войти
-	// 			</button>
-	// 			<div className="separator"></div>
-	// 			<div className="another"></div>
-	// 		</>
-	// 	);
-	// };
+				default:
+					setError('Что-то пошло не так');
+					break;
+			}
+		});
+	};
+	const singin = () => {
+		return (
+			<>
+				<div className="auth-window__label">Админ меню</div>
+				<div className="auth-window__inputs">
+					<input
+						placeholder="Логин"
+						ref={username}
+						type="text"
+						className="auth-window__field"></input>
+					<div className="pass">
+						<input
+							placeholder="Пароль"
+							type="password"
+							className="auth-window__password"
+							ref={pass}></input>
+					</div>
+				</div>
+				<h1>{error}</h1>
+				<button onClick={login} className="submit authbutton">
+					Войти
+				</button>
+				<div className="separator"></div>
+				<div className="another"></div>
+			</>
+		);
+	};
 	return (
 		<div className="background">
 			<div className="auth-wrapper">
 				<div className="auth-window-wrapper">
-					<div className="auth-window">{}</div>
+					<div className="auth-window">{singin()}</div>
 				</div>
 			</div>
 		</div>

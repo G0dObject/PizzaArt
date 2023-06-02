@@ -21,23 +21,27 @@ const Orders = () => {
 					<table className="styled-table">
 						<thead>
 							<tr>
-								<th>Имя</th>
-								<th>Значение</th>
+								<th>Номер</th>
+								<th>Сумма</th>
+								<th>Количество товаров</th>
+								<th>ID товаров {}</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>Токен Бота</td>
-								<td className="setting-input">
-									<input></input>
-								</td>
-							</tr>
-							<tr className="active-row">
-								<td>Id оператора</td>
-								<div className="setting-input">
-									<input></input>
-								</div>
-							</tr>
+							{orders.map((res) => {
+								console.log(res);
+
+								return (
+									<>
+										<tr key={Math.random()} className="active-row">
+											<td>{res.customerNumber}</td>
+											<td>{res.total}</td>
+											<td>{res.amount}</td>
+											<td>{res.productsId}</td>
+										</tr>
+									</>
+								);
+							})}
 						</tbody>
 					</table>
 				</div>

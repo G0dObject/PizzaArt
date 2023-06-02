@@ -46,7 +46,7 @@ export const PizzaBlock: React.FC<PizzaBlockProps> = ({
 		dispatch(addItem(item));
 	};
 	const calc = (id: number) => {
-		let cprice = (price / sizes[0]) * sizes[id];
+		let cprice = Math.round((price / sizes[0]) * sizes[id]);
 
 		setCurrentPrice(cprice);
 	};

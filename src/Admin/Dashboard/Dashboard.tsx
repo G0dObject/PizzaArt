@@ -1,8 +1,10 @@
 import { useState } from 'react';
 
-import './_Dashboard.scss';
+import { AuthStore } from '../..';
+import Auth from '../Auth';
 import Add from './Add/Add';
 import Orders from './Orders/Orders';
+import './_Dashboard.scss';
 
 const Dashboard = () => {
 	const [mode, setMode] = useState(0);
@@ -19,7 +21,7 @@ const Dashboard = () => {
 		}
 	};
 
-	return (
+	return AuthStore.isAuth ? (
 		<>
 			<div className="area">{selectMode()}</div>
 			<nav className="main-menu">
@@ -43,12 +45,20 @@ const Dashboard = () => {
 				</ul>
 
 				<ul className="logout">
-					<button className="trans">
+					<button
+						className="trans"
+						onClick={() => {
+							AuthStore.logout();
+						}}>
 						<i className="fa fa-power-off fa-2x"></i>
 						<span className="nav-text">Logout</span>
 					</button>
 				</ul>
 			</nav>
+		</>
+	) : (
+		<>
+			<Auth></Auth>
 		</>
 	);
 };

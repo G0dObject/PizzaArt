@@ -1,6 +1,13 @@
-import { PizzaBlockProps } from '../../../components';
+import axios from 'axios';
+import { IProduct } from '../../../Core/Interfaces/Auth/IProduct';
+import './_Add.scss';
+const Item = (props: IProduct) => {
+	const fetchdelete = (): void => {
+		axios
+			.delete(process.env.REACT_APP_BASE_API_URL + `menu?id=${props.id}`, {})
+			.then(() => window.location.reload());
+	};
 
-const Item = (props?: PizzaBlockProps) => {
 	return (
 		<div className="item">
 			<img src={props?.imageUrl}></img>
@@ -8,10 +15,14 @@ const Item = (props?: PizzaBlockProps) => {
 				onClick={() => {
 					navigator.clipboard.writeText(props?.imageUrl as string);
 				}}
-				className="image-link">
-				<a href={props?.imageUrl}>{props?.imageUrl}</a>
+				className="item-link">
+				<p>{props?.imageUrl}</p>
 			</button>
-			<button className="image-delete">Удалить</button>
+			<div className="item-title">{props.title}</div>
+			<div className="item-price">{props.price} ₽</div>
+			<button onClick={fetchdelete} className="item-delete">
+				Удалить
+			</button>
 		</div>
 	);
 };
